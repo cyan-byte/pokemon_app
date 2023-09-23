@@ -2,17 +2,21 @@
 const express = require("express");
 // create an Express application
 const app = express();
-//  the following line of code is needed for our application to be able to use the JSX View Engine
+//  the following lines of code are needed for our application to be able to use the JSX View Engine
 const jsxEngine = require("jsx-view-engine");
+app.set("view engine", "jsx");
+app.engine("jsx", jsxEngine());
+
 // Define a port number for your server
 const port = 3000;
-// Set this 'database' to a variable called pokemonin your server.jsfile
+
+// Set this 'database' to a variable called pokemon in your server.jsfile
 const pokemon = require("./models/pokemon");
 // Create a get route /pokemon that will res.send(pokemon), which will display your pokemon data as json in the browser
-app.get("/pokemon/", (req, res) => {
-    // res.send(fruits);
-    res.render("pokemon/Index", { pokemon: pokemon });
-  });
+app.get("/pokemon", (req, res) => {
+  // Render the Index.jsx file
+  res.render("Index");
+});
 
 // define a route that sends a welcome message
 app.get("/", (req, res) => {
