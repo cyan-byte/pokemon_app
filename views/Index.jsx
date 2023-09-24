@@ -28,13 +28,15 @@ const Index = ({ pokemon }) => {
         <title>See All The Pokemon</title>
       </head>
       <body>
-        <div>
-          {/* Inline styles applied to the <h1> element */}
+      <div>
           <h1 style={headerStyle}>See All The Pokemon!</h1>
         </div>
         <ul>
-          {capitalizedPokemonData.map((pokemon, index) => (
-            <li key={index}>{pokemon.name}</li>
+          {pokemon.map((poke, index) => (
+            <li key={index}>
+              {/* Create a dynamic link to the Show route */}
+              <a href={`/pokemon/${index}`}>{poke.name}</a>
+            </li>
           ))}
         </ul>
       </body>
