@@ -3,7 +3,7 @@ const React = require("react");
 
 // Define your JSX component
 const Index = ({ pokemon }) => {
-  // Inline styles as an object
+  // Inline styles as an object. This holds the CSS styles for the component's header below
   const headerStyle = {
     textAlign: "center",
     backgroundColor: "#007BFF",
@@ -17,9 +17,9 @@ const Index = ({ pokemon }) => {
   }
 
   // Process the Pokémon data to capitalize names
-  const capitalizedPokemonData = pokemon.map((pokemon) => ({
+  const capitalizedPokemonData = pokemon.map((poke) => ({
     ...pokemon,
-    name: capitalizeFirstLetter(pokemon.name),
+    name: capitalizeFirstLetter(poke.name),
   }));
 
   return (
@@ -28,13 +28,12 @@ const Index = ({ pokemon }) => {
         <title>See All The Pokemon</title>
       </head>
       <body>
-      <div>
+        <div>
           <h1 style={headerStyle}>See All The Pokemon!</h1>
         </div>
         <ul>
-          {pokemon.map((poke, index) => (
+          {capitalizedPokemonData.map((poke, index) => (
             <li key={index}>
-              {/* Create a dynamic link to the Show route */}
               <a href={`/pokemon/${index}`}>{poke.name}</a>
             </li>
           ))}

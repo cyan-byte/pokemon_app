@@ -24,8 +24,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/pokemon/:id", (req, res) => {
-    res.send(req.params.id)
-})
+    const pokemonIndex = +req.params.id;
+    const selectedPokemon = pokemon[pokemonIndex];
+    res.render("Show", { pokemon: selectedPokemon });
+  });
 
 // Start the server and listen on the specified port
 app.listen(port, () => {
